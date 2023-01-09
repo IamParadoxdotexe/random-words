@@ -4,7 +4,7 @@
 
 `random-words` generates random words for use as sample text. We use it to generate random blog posts when testing [Apostrophe](http://apostrophecms.org).
 
-Cryptographic-quality randomness is NOT the goal, as speed matters for generating sample text and security does not. `Math.random()` is used.
+Cryptographic-quality randomness is NOT the goal, as speed matters for generating sample text and security does not. As such, `Math.random()` is used in most cases. Alternatively, the [seedrandom](https://www.npmjs.com/package/seedrandom) package is used when the `seed` option is used.
 
 Installation:
 
@@ -25,6 +25,11 @@ Examples:
 
     console.log(randomWords({ exactly: 2 }));
     ['beside', 'between']
+
+    console.log(randomWords({ min: 2, max: 3, seed: 'my-seed' }));
+    console.log(randomWords({ min: 2, max: 3, seed: 'my-seed' }));
+    ['plenty', 'pure']
+    ['plenty', 'pure']
 
     console.log(randomWords({ exactly: 5, join: ' ' }))
     'army beautiful became if exactly'
